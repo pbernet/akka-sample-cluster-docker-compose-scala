@@ -1,8 +1,7 @@
 name := "akka-sample-cluster-docker-compose-scala"
-maintainer := "Michael Hamrah <m@hamrah.com>"
 
 /* scala versions and options */
-scalaVersion := "2.13.1"
+scalaVersion := "2.13.10"
 
 // These options will be used for *all* versions.
 scalacOptions ++= Seq(
@@ -12,7 +11,7 @@ scalacOptions ++= Seq(
   "-Xlint",
 )
 
-val akka = "2.6.12"
+val akka = "2.6.20"
 
 /* dependencies */
 libraryDependencies ++= Seq (
@@ -23,8 +22,7 @@ libraryDependencies ++= Seq (
   "com.typesafe.akka" %% "akka-cluster-typed" % akka,
 )
 
-version in Docker := "latest"
-dockerExposedPorts in Docker := Seq(1600)
-dockerRepository := Some("lightbend")
-dockerBaseImage := "java"
+Docker / version := "latest"
+Docker / dockerExposedPorts := Seq(1600)
+dockerBaseImage := "adoptopenjdk/openjdk11"
 enablePlugins(JavaAppPackaging)

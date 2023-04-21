@@ -15,20 +15,20 @@ object ClusterListener {
 
       Behaviors.receiveMessagePartial {
         case MemberUp(member) =>
-          ctx.log.debug("Member is Up: {}", member.address)
+          ctx.log.debug("Member is up: {}", member.address)
           Behaviors.same
         case UnreachableMember(member) =>
           ctx.log.debug("Member detected as unreachable: {}", member)
           Behaviors.same
         case MemberRemoved(member, previousStatus) =>
-          ctx.log.debug("Member is Removed: {} after {}",
+          ctx.log.debug("Member is removed: {} after: {}",
             member.address, previousStatus)
           Behaviors.same
         case LeaderChanged(member) =>
           ctx.log.info("Leader changed: " + member)
           Behaviors.same
         case any: MemberEvent =>
-          ctx.log.info("Member Event: " + any.toString)
+          ctx.log.info("Member event: " + any.toString)
           Behaviors.same
       }
     }
